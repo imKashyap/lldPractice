@@ -1,6 +1,6 @@
 package parkingLot.parking;
 
-import parkingLot.utils.IdGenerator;
+import parkingLot.ticketing.ParkingTicket;
 import parkingLot.vehicle.Vehicle;
 import parkingLot.vehicle.VehicleType;
 
@@ -10,19 +10,19 @@ public class ParkingSpot {
     private SpotState state;
     private Vehicle currentVehicle;
 
-    public ParkingSpot(VehicleType type) {
-        this.id = IdGenerator.generateId("PS-");
+    public ParkingSpot(String id, VehicleType type) {
+        this.id = id;
         this.type = type;
         this.state = SpotState.AVAILABLE;
     }
 
-    public synchronized boolean assignVehicle(Vehicle vehicle) {
+    public synchronized ParkingTicket.Builder assignVehicle(Vehicle vehicle) {
         if (state == SpotState.AVAILABLE && vehicle.getType() == this.type) {
             state = SpotState.OCCUPIED;
             this.currentVehicle = vehicle;
-            return true;
+            return new ParkingTicket.Builder(vehicle).setParkingSpot(this);
         }
-        return false;
+        return null;
     }
 
     public synchronized void release() {

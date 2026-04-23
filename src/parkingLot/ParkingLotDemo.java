@@ -6,8 +6,10 @@ import parkingLot.parking.DisplayBoard;
 import parkingLot.parking.Observer;
 import parkingLot.parking.ParkingFloor;
 import parkingLot.parking.ParkingSpot;
+import parkingLot.payment.CashPayment;
+import parkingLot.payment.UPIPayment;
 import parkingLot.ticketing.ParkingTicket;
-import parkingLot.ticketing.WeekendFeeCalculator;
+import parkingLot.ticketing.nominal.WeekendFeeCalculator;
 import parkingLot.vehicle.Vehicle;
 import parkingLot.vehicle.VehicleFactory;
 import parkingLot.vehicle.VehicleType;
@@ -23,8 +25,8 @@ public class ParkingLotDemo {
 
         Observer displayBoard = new DisplayBoard();
         ParkingFloor floor1 = new ParkingFloor("L1");
-        floor1.addParkingSpot(new ParkingSpot( VehicleType.CAR));
-        floor1.addParkingSpot(new ParkingSpot(VehicleType.BIKE));
+        floor1.addParkingSpot(new ParkingSpot("PS-1", VehicleType.CAR));
+        floor1.addParkingSpot(new ParkingSpot("PS-2", VehicleType.BIKE));
         floor1.addObserver(displayBoard);
         lot.addfloor(floor1);
 
@@ -40,7 +42,7 @@ public class ParkingLotDemo {
 
         Thread.sleep(5000); // simulate time parked
 
-        exitGate.exitVehicle(carTicket);
-        exitGate.exitVehicle(bikeTicket);
+        exitGate.exitVehicle(carTicket, new CashPayment());
+        exitGate.exitVehicle(bikeTicket, new UPIPayment());
     }
 }

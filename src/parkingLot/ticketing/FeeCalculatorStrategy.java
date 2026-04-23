@@ -1,5 +1,5 @@
 package parkingLot.ticketing;
 
-public interface FeeCalculator {
+public interface FeeCalculatorStrategy {
     double calculateFee(ParkingTicket ticket);
 }

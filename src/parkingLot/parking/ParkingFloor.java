@@ -1,10 +1,10 @@
 package parkingLot.parking;
 
-import parkingLot.vehicle.VehicleType;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import parkingLot.vehicle.VehicleType;
 
 public class ParkingFloor {
     private final String id;

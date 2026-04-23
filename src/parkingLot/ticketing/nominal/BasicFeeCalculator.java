@@ -1,4 +1,4 @@
-package parkingLot.ticketing;
+package parkingLot.ticketing.nominal;
 
 public class BasicFeeCalculator extends AbstractFeeCalculator {
     protected double baseRate() { return 10; }

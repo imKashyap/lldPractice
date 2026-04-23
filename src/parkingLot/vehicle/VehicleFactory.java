@@ -7,6 +7,7 @@ public class VehicleFactory {
             case BIKE -> new Bike(licensePlate);
             case CAR -> new Car(licensePlate);
             case TRUCK -> new Truck(licensePlate);
+            case EV -> new EV(licensePlate);
         };
     }
 }
