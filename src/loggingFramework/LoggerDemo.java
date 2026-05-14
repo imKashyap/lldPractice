@@ -3,7 +3,7 @@ package loggingFramework;
 public class LoggerDemo {
     public static void main(String[] args) {
         try {
-            LoggerConfig config = LoggerConfig.getInstance()
+            LoggerConfig.getInstance()
                     .setLogLevel(LogLevel.DEBUG)
                     .addHandler(new ConsoleLogHandler());
 //                    .addHandler(new FileLogHandler("app.log"));

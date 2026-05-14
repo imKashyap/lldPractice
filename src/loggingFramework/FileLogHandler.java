@@ -1,10 +1,11 @@
 package loggingFramework;
 
 import java.io.BufferedWriter;
+import java.io.Closeable;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileLogHandler implements LogHandler {
+public class FileLogHandler implements LogHandler, Closeable {
     private final BufferedWriter writer;
 
     public FileLogHandler(String filePath) throws IOException {
@@ -19,5 +20,10 @@ public class FileLogHandler implements LogHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public synchronized void close() throws IOException {
+        writer.close();
     }
 }

@@ -11,7 +11,7 @@ public class Logger {
     }
 
     public void log(LogLevel level, String message) {
-        if (level.ordinal() >= config.getCurrentLevel().ordinal()) {
+        if (level.isEnabledFor(config.getCurrentLevel())) {
             LogMessage logMessage = new LogMessage(level, message);
             for (LogHandler handler : config.getHandlers()) {
                 handler.handle(logMessage);
@@ -26,4 +26,3 @@ public class Logger {
     public void error(String msg) { log(LogLevel.ERROR, msg); }
     public void fatal(String msg) { log(LogLevel.FATAL, msg); }
 }
-
