@@ -41,3 +41,43 @@
 * Use ConcurrentHashMap / ReadWriteLock for concurrent read/writes of spot availability.
 * Thread-safe handling of vehicle entry/exit via synchronized or lock mechanisms.
 * Spot assignment should be atomic — to avoid double-booking under concurrent load.
+
+## Prep / Design Notes
+
+`ParkingLot`
+- Singleton coordinator for the complete parking system.
+- Owns entry gates, exit gates, and parking floors.
+- Operations: `parkVehicle(Vehicle): ParkingTicket`, `unparkVehicle(Vehicle)`.
+
+`EntryGate`
+- Handles vehicle entry.
+- Operation: `enter(Vehicle): ParkingTicket`.
+
+`ExitGate`
+- Handles vehicle exit.
+- Coordinates fee calculation and payment.
+- Operation: `exit(ParkingTicket): ParkingReceipt`.
+
+`ParkingFloor`
+- Owns parking spots.
+- Uses locking around spot assignment and release.
+- Operations: `parkAtSpot(Vehicle)`, `unpark(ParkingTicket)`.
+
+`ParkingSpot`
+- Has a vehicle-compatible spot type and a spot state.
+- Operations: `parkAtSpot(Vehicle)`, `unpark(ParkingTicket)`.
+
+`Vehicle`
+- Stores vehicle number and vehicle type.
+
+`ParkingTicket`
+- Stores parking floor, parking spot, entry time, and vehicle.
+
+Design flow:
+1. Entry gate receives a vehicle.
+2. Parking lot finds a suitable floor and spot.
+3. Spot is marked occupied and a ticket is issued.
+4. Exit gate receives the ticket.
+5. Fee strategy calculates amount.
+6. Payment strategy collects payment.
+7. Spot is released and receipt is generated.

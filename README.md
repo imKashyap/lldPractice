@@ -15,8 +15,8 @@ Low-level design practice implementations in Java.
 | Movie Ticket Booking System | [src/movieTicketBookingSystem](src/movieTicketBookingSystem/README.md) |
 | Online Auction System | [src/onlineAuctionSystem](src/onlineAuctionSystem/README.md) |
 | Parking Lot | [src/parkingLot](src/parkingLot/README.md) |
-| Snake and Ladder | [src/snakenladder](src/snakenladder) |
+| Snake and Ladder | [src/snakenladder](src/snakenladder/README.md) |
 | Stack Overflow | [src/stackOverflow](src/stackOverflow/README.md) |
 | Task Management System | [src/taskManagementSystem](src/taskManagementSystem) |
-| Tic Tac Toe | [src/tictactoe](src/tictactoe) |
+| Tic Tac Toe | [src/tictactoe](src/tictactoe/README.md) |
 | Vending Machine | [src/vendingMachine](src/vendingMachine) |
