@@ -5,7 +5,6 @@ class Car:
     - modelYear
     - licensePlateNo
     - carType
-    + setSatus(CarStatus) -> void
 
 enum CarType:
     - VAN (2K)

@@ -1,0 +1,24 @@
+package carRentalSystem.models.bookingState;
+
+import carRentalSystem.models.Booking;
+import carRentalSystem.models.BookingStatus;
+
+public class BookingConfirmedState implements BookingState {
+
+    @Override
+    public void reserveCar(Booking booking) {
+        throw new IllegalStateException("Booking is already confirmed");
+    }
+
+    @Override
+    public void cancelBooking(Booking booking) {
+        booking.setStatus(BookingStatus.CANCELLED);
+        booking.setState(new BookingCancelledState());
+    }
+
+    @Override
+    public void completeBooking(Booking booking) {
+        booking.setStatus(BookingStatus.COMPLETED);
+        booking.setState(new BookingCompletedState());
+    }
+}
