@@ -3,7 +3,7 @@ package rateLimiter;
 import java.util.HashMap;
 import java.util.Map;
 
-class SlidingWindowCounterLimiter {
+class SlidingWindowCounter {
     private final int limit;
     private final int windowSeconds;
     private final Map<String, State> state;
@@ -20,7 +20,7 @@ class SlidingWindowCounterLimiter {
         }
     }
 
-    public SlidingWindowCounterLimiter(int limit, int windowSeconds) {
+    public SlidingWindowCounter(int limit, int windowSeconds) {
         if (limit <= 0 || windowSeconds <= 0) {
             throw new IllegalArgumentException("limit and window size must be positive");
         }
